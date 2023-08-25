@@ -1,0 +1,39 @@
+//moving banner
+import java.awt.*;
+import java.applet.*;
+/*<applet code="banner" width=200 height=200></applet>*/
+
+public class Banner extends Applet implements Runnable
+{
+String str="Nanakorobi yaoki 七転び八起き       ";
+Thread t;
+int y=100;
+public void init()
+{
+t=new Thread(this);
+t.start();
+}
+public void run()
+{
+	while(true)
+	{
+	char c=str.charAt(0);
+	str=str.substring(1);
+	str=str+c;		
+	y++;
+		try
+		{
+		t.sleep(300);
+		}
+		catch(Exception e1)
+		{
+		}
+	repaint();
+	}
+	
+}
+public void paint(Graphics g)
+{
+g.drawString(str,100,100);
+}
+}
